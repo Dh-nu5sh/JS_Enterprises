@@ -1,5 +1,6 @@
 import prisma from "@/lib/prisma"
-import { Button } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 import { AddToCartButton } from "@/components/shared/AddToCartButton"
 import { notFound } from "next/navigation"
 import Link from "next/link"
@@ -83,9 +84,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               price: product.price,
               image: product.images[0]
             }} />
-            <Button size="lg" variant="outline" className="w-full sm:w-auto h-12 px-8 font-bold border-2" asChild>
-              <Link href="/checkout">Buy Now</Link>
-            </Button>
+            <Link 
+              href="/checkout" 
+              className={cn(buttonVariants({ size: "lg", variant: "outline" }), "w-full sm:w-auto h-12 px-8 font-bold border-2")}
+            >
+              Buy Now
+            </Link>
           </div>
         </div>
       </div>
